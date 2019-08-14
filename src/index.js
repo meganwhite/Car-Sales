@@ -6,10 +6,10 @@ import 'bulma/css/bulma.css';
 import './styles.scss';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {titleReducer} from '';
+import {carReducer} from './reducers';
 
 
-export const store = createStore(titleReducer);
+export const store = createStore(carReducer);
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
