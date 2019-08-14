@@ -1,3 +1,5 @@
+import { bindActionCreators } from "redux";
+
 // Export Two Things - initialState, reducer fn
 
 const initialState = {
@@ -27,8 +29,7 @@ const initialState = {
         case 'BUY_ITEM':
             return {
               ...state,
-              title: action.payload,
-              editing: !state.editing
+              car: {...state.car,features: action.payload}
             };
         default:
             return state;

@@ -4,9 +4,11 @@ export const removeFeature = () => {
 };
 
 // write an action creator for update title
-export const buyItem = () => {
-  return {
-    type: 'BUY_ITEM',
-  };
+export const buyItem = feature => {
+    console.log('action creator was invoked');
+    return {
+        type: 'BUY_ITEM',
+        payload: feature
+    };
 };
 
