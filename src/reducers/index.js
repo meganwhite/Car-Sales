@@ -21,18 +21,35 @@ const initialState = {
   
   export const carReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'REMOVE_FEATURE':
-            return {
-              ...state,
-              editing: !state.editing
-            };
         case 'BUY_ITEM':
-            return {
-              ...state,
-              car: {...state.car,features: action.payload}
-            };
+            if (!state.car.features.includes(action.payload)){
+                return {
+                    ...state,
+                    additionalPrice: state.additionalPrice + action.payload.price,
+                    car: {
+                        ...state.car,
+                        features: [...state.car.features,action.payload]
+                    },
+                    store: state.store.filter(item => item.id !== action.payload.id)
+                }
+            }
+                return {
+                    state
+                };
+        case 'REMOVE_FEATURE':
+            return{
+                ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
+                car:{...state.car,
+                    features: state.car.features.filter(item =>
+                    item.id !== action.payload.id)
+                },
+                store: [...state.store, action.payload]
+            }
         default:
             return state;
     }
   };
-  
+
+
+
